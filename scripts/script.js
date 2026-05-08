@@ -363,9 +363,14 @@ async function renderProjects() {
         repos = privateProjects.concat(fallback);
     }
 
-    // ── desktop page: render OS icons ──
+    // ── desktop page: OS or mobile depending on screen ──
     if (isDesktopPage) {
-        renderDesktopProjects(repos);
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        if (isMobile) {
+            renderMobileProjects(repos);
+        } else {
+            renderDesktopProjects(repos);
+        }
         return;
     }
 
@@ -839,4 +844,40 @@ function initDesktopClock() {
     };
     tick();
     setInterval(tick, 10000);
+}
+
+/* ============================================================
+   MOBILE PROJECTS — card list for small screens
+   ============================================================ */
+function renderMobileProjects(repos) {
+    const list = document.getElementById('mobile-proj-list');
+    if (!list) return;
+
+    repos.forEach(repo => {
+        const fi      = _fileInfo(repo);
+        const status  = repo.statusLabel || (repo.homepage ? 'Live' : 'Repo');
+        const ghLink  = repo.html_url  || '';
+        const liveLink= repo.homepage  || '';
+        const lang    = (repo.language || '').split('/')[0].trim();
+
+        const linksHtml = [
+            ghLink   ? `<a href="${ghLink}"   target="_blank" rel="noreferrer" class="mp-card-link"><i class="fa-brands fa-github"></i> Source</a>` : '',
+            liveLink ? `<a href="${liveLink}" target="_blank" rel="noreferrer" class="mp-card-link mp-card-link-primary"><i class="fa-solid fa-arrow-up-right"></i> Live</a>` : '',
+        ].filter(Boolean).join('');
+
+        const card = document.createElement('div');
+        card.className = 'mp-card';
+        card.innerHTML = `
+            <div class="mp-card-head">
+                <h3 class="mp-card-name">${repo.name}</h3>
+                <span class="mp-card-badge">${status}</span>
+            </div>
+            <p class="mp-card-desc">${repo.description || 'Repository on GitHub.'}</p>
+            <div class="mp-card-footer">
+                <span class="mp-card-tech">${lang}</span>
+                <div class="mp-card-links">${linksHtml}</div>
+            </div>
+        `;
+        list.appendChild(card);
+    });
 }
