@@ -1,52 +1,95 @@
 <!DOCTYPE html>
-<!-- BASEN ON: https://www.abdulsamad.tech/projects -->
 <html lang="en">
     <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link href="styles.css" rel="stylesheet">
         <script src="scripts/script.js" defer></script>
-        <title>Projects</title>
+        <title>Work — Jordi Portabella</title>
     </head>
-    <body>
+    <body class="page-desktop">
+
         <div id="large-header" class="large-header" aria-hidden="true">
             <canvas id="demo-canvas"></canvas>
+            <div class="bg-orb bg-orb-1"></div>
+            <div class="bg-orb bg-orb-2"></div>
         </div>
 
         <header class="site-header">
-            <a href="index.html" class="brand">Jordi Portabella</a>
+            <a href="index.html" class="brand">JP</a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="projects.html">Work</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </nav>
-
             <div class="header-actions">
                 <span class="header-divider" aria-hidden="true"></span>
                 <select id="lenguaje-select">
                     <option value="EN">EN</option>
                     <option value="ES">ES</option>
                 </select>
-                <button class="theme-toggle" type="button" onclick="changeColor(this)" aria-label="Toggle color theme">
+                <button class="theme-toggle" type="button" onclick="changeColor(this)" aria-label="Toggle theme">
                     <i class="fa-solid fa-moon theme-icon theme-icon-moon"></i>
                     <i class="fa-solid fa-sun theme-icon theme-icon-sun"></i>
                 </button>
             </div>
         </header>
 
-        <main class="projects-page">
-            <section class="projects-hero reveal reveal-up">
-                <p class="projects-kicker">Selected Works</p>
-                <h1>Projects from my GitHub.</h1>
-                <p class="projects-lead">
-                    A collection of digital work focused on clean engineering, practical interfaces and systems built to solve real problems.
-                </p>
-            </section>
+        <!-- ══════════════════════════════════════════════
+             JP/OS — retro desktop
+        ══════════════════════════════════════════════ -->
+        <div class="os-desktop" id="os-desktop">
 
-            <section class="projects-list" id="projects" data-layout="showcase">
-            </section>
-        </main>
+            <!-- background watermark -->
+            <div class="os-watermark" aria-hidden="true">
+                <span class="osw-name">JP<span class="osw-slash">/</span>OS</span>
+                <span class="osw-ver">v1.0.0</span>
+            </div>
+
+            <!-- hint that fades out -->
+            <p class="desktop-hint">double-click an icon to open a project</p>
+
+            <!-- project icons — left 2-col grid -->
+            <div class="desktop-icons-col" id="desktop-icons"></div>
+
+            <!-- system icons — right column (below clock) -->
+            <div class="desktop-sys-col" id="desktop-sys-icons"></div>
+
+            <!-- clock widget top-right -->
+            <div class="desktop-clock-widget" id="desktop-clock-widget">
+                <span class="dcw-time" id="dcw-time">00:00</span>
+                <span class="dcw-date" id="dcw-date"></span>
+                <span class="dcw-status">system online</span>
+            </div>
+
+            <!-- all floating windows render here -->
+            <div id="windows-layer" class="windows-layer"></div>
+
+            <!-- loading overlay (removed after fetch) -->
+            <div class="desktop-loading" id="desktop-loading">
+                <span class="dl-icon"><i class="fa-solid fa-terminal"></i></span>
+                <p>Loading filesystem<span class="dl-dots">...</span></p>
+                <div class="dl-bar"><div class="dl-fill"></div></div>
+            </div>
+
+            <!-- taskbar (bottom) -->
+            <div class="taskbar" id="taskbar">
+                <button class="tb-start-btn" id="tb-start" title="JP/OS">
+                    <i class="fa-solid fa-terminal"></i>&nbsp;JPOS
+                </button>
+                <div class="taskbar-divider"></div>
+                <div class="taskbar-windows" id="taskbar-windows"></div>
+                <div class="taskbar-tray">
+                    <i class="fa-solid fa-wifi" style="font-size:.55rem;color:var(--subtle)"></i>
+                    <span class="tb-clock" id="tb-clock">00:00</span>
+                </div>
+            </div>
+
+        </div>
+
     </body>
 </html>

@@ -1,35 +1,51 @@
-<div class="section" id="aboutme">
-    <div class="about-text reveal reveal-left">
-        <h2>About Me</h2>
-        <p id="big-box">
-            I'm a developer passionate about building clean, efficient, and visually engaging digital experiences.
-            I enjoy turning ideas into real products, focusing on both functionality and design.
-            Always learning, always improving.
-        </p>
+<div class="sec" id="aboutme">
 
-        <p class="location">📍 Barcelona, Spain</p>
-        <div class="github-stats">
-            <div class="github-stat-card reveal reveal-up delay-1">
-                <p class="stat-value" id="repos-count">--</p>
-                <p class="stat-label">Repos</p>
-            </div>
-            <div class="github-stat-card reveal reveal-up delay-2">
-                <p class="stat-value" id="commits-count">--</p>
-                <p class="stat-label">Commits</p>
-            </div>
-            <div class="github-stat-card reveal reveal-up delay-3">
-                <p class="stat-value" id="merged-count">--</p>
-                <p class="stat-label">Merged PRs</p>
+    <p class="sec-label reveal reveal-up">
+        <span class="sec-num">01 —</span> About Me
+    </p>
+
+    <div class="about-cols">
+
+        <div class="about-text reveal reveal-left">
+            <h2 class="sec-h">Passionate about<br>building things.</h2>
+            <p>
+                I'm a developer passionate about building clean, efficient, and visually
+                engaging digital experiences. I enjoy turning ideas into real products,
+                focusing on both functionality and design.
+            </p>
+            <p>
+                Always learning, always improving — from healthcare systems to full-stack
+                engineering, every step adds a new perspective.
+            </p>
+            <span class="about-loc">📍 Barcelona, Spain</span>
+        </div>
+
+        <div class="reveal reveal-right delay-1">
+            <div class="stats-box">
+                <div class="stats-box-header">
+                    <span>▶</span> github_stats.json
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-cell">
+                        <p class="stat-val" id="repos-count">—</p>
+                        <p class="stat-lbl">Repositories</p>
+                    </div>
+                    <div class="stat-cell">
+                        <p class="stat-val" id="commits-count">—</p>
+                        <p class="stat-lbl">Commits</p>
+                    </div>
+                    <div class="stat-cell">
+                        <p class="stat-val" id="merged-count">—</p>
+                        <p class="stat-lbl">Merged PRs</p>
+                    </div>
+                    <div class="stat-cell">
+                        <p class="stat-val">2+</p>
+                        <p class="stat-lbl">Years Coding</p>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 
-    <div id="globe" class="reveal reveal-right delay-2"></div>
 </div>
-
-<!-- LIBRERÍAS -->
-<script src="https://unpkg.com/three"></script>
-<script src="https://unpkg.com/globe.gl"></script>
-
-<!-- TU SCRIPT -->
-<script src="scripts/globe.js"></script>
